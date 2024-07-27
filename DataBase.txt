@@ -1,0 +1,60 @@
+Use quanlyphim;
+
+
+Create table if not exists KHACHHANG
+(
+	maKhachHang char(10) primary key,
+	tenKhachHang char(50)  not null,
+	email char(50),
+	matkhau char(16),
+	sdt char(12)
+);
+
+create table if not exists THELOAI
+(
+    maTheLoai char(10) primary key,
+    tenTheLoai char(50) not null
+);
+
+
+create table if not exists PHIM
+(
+    maPhim char(10) primary key,
+    tenPhim char(50) not null,
+    noiDungPhim text,
+    soDiemPhim float,
+    namRaMat int,
+    anhBia char(200),
+    maTheLoai char(10),
+	yeuthich char(3),
+    constraint FK_maTheLoai_PHIM foreign key (maTheLoai) references THELOAI(maTheLoai)
+);
+
+
+create table  if not exists BANGDANHGIA
+(
+	maPhim char(10),
+    maKhachHang char(10),
+    soDiemDanhGia float,
+    constraint PK_DANHGIA primary key (maPhim, maKhachHang),
+    constraint FK_maPhim_DANHGIA foreign key (maPhim) references PHIM(maPhim),
+    constraint FK_maKhachHang_DANHGIA foreign key (maKhachHang) references KHACHHANG(maKhachHang)
+);
+
+create table if not exists BINHLUAN
+(
+	maBinhLuan INTEGER primary key,
+    maPhim char(10),
+    maKhachHang char(10),
+    noiDungBinhLuan char(200),
+    thoiGianBinhLuan datetime,
+    constraint FK_maPhim_BINHLUAN foreign key (maPhim) references PHIM(maPhim),
+    constraint FK_maKhachHang_BINHLUAN foreign key (maKhachHang) references KHACHHANG(maKhachHang)
+);
+
+
+Insert Into KHACHHANG (maKhachHang,tenKhachHang,email,matKhau,sdt)
+Values
+('KH01','Lê Phú Quí','qui@gmail.com','123456','01234567891'),
+('KH02','Bùi Văn Thanh','congtula@gmail.com','654321','09876543210'),
+('KH03','Trần Thị Phương Trinh','trinhcute@gmail.com','456789','12378945610');

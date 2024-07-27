@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+	--backgroundColor: rgba(51, 51, 51, 1);
+}
+
 body{
 	width: 100%;
-	height: 1000vh;
-	background-color: rgba(51, 51, 51, 1);
+	/* height: 1000vh; */
+	background-color: var(--backgroundColor);
+	font-family: 'Roboto',sans-serif;
 }
 .container{
 	max-width: 97%;
@@ -11,6 +18,171 @@ body{
 img{
 	width: 100%;
 }
+
+/* Login */
+.container-login{
+	min-width: 400px;
+	position: relative;
+}
+.main-login{
+	width: 520px;
+	height: 100%;
+	background-color: var(--backgroundColor);	
+	box-shadow: 1px 10px 10px 3px rgba(192, 192, 192, 0.4);
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.main-login form{
+	width: 70%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.main-login form h1{
+	font-weight: 700;
+	font-size: 20px;
+	color: white;
+}
+
+.main-login input[type='text'] {
+	width: 100%;
+	margin-top: 20px;
+	padding: 7px 15px;
+	color: white;
+	font-size: 11px;
+	background-color: rgb(25, 25, 25, 1);
+	border-radius: 7px;
+	border: none;
+	outline: none;
+}
+
+.main-login input[type='text']::placeholder{
+	color: white;
+}
+
+.forgot-password{
+	width: 100%;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 12px;
+	color: white;
+}
+
+.forgot-password .remember input[type='checkbox']{
+	width: 10px;
+	height: 10px;
+	margin-right: 5px;
+}
+
+.forgot-password .remmeber{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.forgot-password a{
+	text-decoration: none;
+	color: white;
+}
+
+.main-login form button{
+	width: 100%;
+	font-size: 14px;
+	font-weight: 500;
+	color: white;
+	background-color: rgb(218,0,0, 1);
+	border-radius: 15px;
+	border: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 140px;
+}
+
+
+.logout{
+	width: 100%;
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	font-size: 13px;
+}
+
+.logout a{
+	color: white;
+	text-decoration: none;
+}
+
+.logout a:last-child{
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.main-login form p:nth-of-type(1){
+	margin-top: 20px;
+	color: white;
+	font-size: 13px;
+}
+
+.main-login .link-login {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.main-login .link-login a {
+	width: 170px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	background-color: aliceblue;
+	border-radius: 15px;
+	text-decoration: none;
+}
+
+.main-login .link-login a p{
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 4px;
+	margin-left: 28px;
+	color: rgba(24, 119, 242, 1);
+}
+
+.main-login .link-login a img{
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	margin-left: 5px;
+}
+
+.notification {
+	position: absolute;
+	width: 500px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background-color: rgba(73, 73, 73, 1);	
+	/* background-color: red;	 */
+	z-index: 1000;
+}
+
+.notification .message{
+	font-size: 30px;
+	color: white;
+	position: relative;
+}
+
+/* Trang chu */
 /*header*/
 #header{
 	width: 100%;
