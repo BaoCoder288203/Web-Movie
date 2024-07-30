@@ -28,7 +28,7 @@
     <div class="container-login">
         <img src="../upload/poster_login.png" alt="">
         <div class="main-login">
-            <form action="test.php" method="POST">
+            <form action="checkLogin.php" method="POST">
                 <h1>LOG IN</h1>
                 <input type="text" name="username" placeholder="Email or Number of Phone">
                 <input type="text" name="password" placeholder="Password">

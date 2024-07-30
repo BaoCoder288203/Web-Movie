@@ -52,19 +52,53 @@
         </div>
     </header>
     <main>
-        <!-- <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../upload/slide1.png" class="d-block w-100" alt="Slide 1">
+        <?php
+        require '../config.php';
+        require '../connectDB.php';
+
+        // Truy vấn để lấy các poster phim
+        $sql = "SELECT anhBia, tenPhim FROM PHIM";
+        $result = $conn->query($sql);
+
+        $movies = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $movies[] = $row;
+            }
+        }
+        ?>
+
+        <div class="">
+            <div id="movieCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <?php foreach ($movies as $index => $movie): ?>
+                    <li data-target="#movieCarousel" data-slide-to="<?php echo $index; ?>"
+                        class="<?php echo $index === 0 ? 'active' : ''; ?>"></li>
+                    <?php endforeach; ?>
+                </ol>
+                <div class="carousel-inner">
+                    <?php foreach ($movies as $index => $movie): ?>
+                    <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                        <img src="<?php echo htmlspecialchars($movie['anhBia']); ?>" class="d-block w-100"
+                            alt="<?php echo htmlspecialchars($movie['tenPhim']); ?>">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5><?php echo htmlspecialchars($movie['tenPhim']); ?></h5>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
-                <div class="carousel-item">
-                    <img src="../upload/slide2.png" class="d-block w-100" alt="Slide 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="../upload/slide4.png" class="d-block w-100" alt="Slide 3">
-                </div>
+                <a class="carousel-control-prev" href="#movieCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#movieCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-        </div> -->
+        </div>
+
+
         <div class="container">
         </div>
 

@@ -18,7 +18,7 @@ if (isset($_POST['username']) || isset($_POST['password'])) {
         if ($password === $row['matkhau']) { // Nếu bạn đang lưu mật khẩu đã mã hóa
             // Đăng nhập thành công
             $_SESSION['username'] = $row['email'] ?: $row['sdt'];
-            header('Location: TrangChu.php');
+            header('Location: MainPage.php');
             exit();
         } else {
             // Mật khẩu không đúng
