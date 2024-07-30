@@ -1,7 +1,7 @@
 Use quanlyphim;
 
 
-Create table if not exists KH
+Create table if not exists KHACHHANG
 (
 	maKhachHang char(10) primary key,
 	tenKhachHang char(50)  not null,
@@ -26,10 +26,17 @@ create table if not exists PHIM
     namRaMat int,
     anhBia char(200),
     maTheLoai char(10),
-	yeuthich char(3),
+	yeuthich char(3) Default False,
     constraint FK_maTheLoai_PHIM foreign key (maTheLoai) references THELOAI(maTheLoai)
 );
 
+create table if not exists Phim_TheLoai
+(
+    maphim char(10),
+    maTheLoai char(10),
+    constraint FK_maPhim_Phimtheloai foreign key (maPhim) references PHIM(maPhim),
+    constraint FK_maTheLoai_Phimtheloai foreign key (maTheLoai) references THELOAI(maTheLoai)
+);
 
 create table  if not exists BANGDANHGIA
 (
