@@ -99,9 +99,7 @@
         </div>
 
 
-        <div class="container">
-            <a style="color:white;font-size:24px"; ">NEW</a>
-        </div>
+        <div></div>
 
 
     </div>
