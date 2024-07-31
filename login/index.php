@@ -24,15 +24,6 @@
     <div class="container-login">
         <img src="../upload/poster_login.png" alt="">
         <div class="main-login">
-            <?php if($message) : ?>
-            <label class="message">
-                <input type="checkbox" class="alertCheckbox" autocomplete="off" />
-                <div class="alert <?= $message ? 'error' : ''?>">
-                    <span class="alertClose" onclick="this.parentElement.style.display='none'">X</span>
-                    <span class="alertText"><?= $message ?></span>
-                </div>
-            </label>
-            <?php endif; ?>
             <form action="checkLogin.php" method="POST">
                 <h1>LOG IN</h1>
                 <input type="text" name="username" placeholder="Email or Number of Phone">

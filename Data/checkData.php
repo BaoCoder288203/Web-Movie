@@ -27,12 +27,12 @@ while ($page <= $totalPages) {
         $soDiemPhim = $movie['vote_average'];
         $namRaMat = substr($movie['release_date'], 0, 4);
         $anhBia = $conn->real_escape_string("https://image.tmdb.org/t/p/w500" . $movie['poster_path']);
-        $maTheLoai = isset($movie['genre_ids'][0]) ? $movie['genre_ids'][0] : null; // Giả định chỉ lấy thể loại đầu tiên
+        //$maTheLoai = isset($movie['genre_ids'][0]) ? $movie['genre_ids'][0] : null; // Giả định chỉ lấy thể loại đầu tiên
         $yeuThich = 0; // Mặc định là chưa yêu thích
 
-        $sql = "INSERT INTO phim (maPhim, tenPhim, noiDungPhim, soDiemPhim, namRaMat, anhBia, maTheLoai, yeuThich)
-                VALUES ('$maPhim', '$tenPhim', '$noiDungPhim', '$soDiemPhim', '$namRaMat', '$anhBia', '$maTheLoai', '$yeuThich')
-                ON DUPLICATE KEY UPDATE tenPhim='$tenPhim', noiDungPhim='$noiDungPhim', soDiemPhim='$soDiemPhim', namRaMat='$namRaMat', anhBia='$anhBia', maTheLoai='$maTheLoai', yeuThich='$yeuThich'";
+        $sql = "INSERT INTO phim (maPhim, tenPhim, noiDungPhim, soDiemPhim, namRaMat, anhBia, yeuThich)
+                VALUES ('$maPhim', '$tenPhim', '$noiDungPhim', '$soDiemPhim', '$namRaMat', '$anhBia', '$yeuThich')
+                ON DUPLICATE KEY UPDATE tenPhim='$tenPhim', noiDungPhim='$noiDungPhim', soDiemPhim='$soDiemPhim', namRaMat='$namRaMat', anhBia='$anhBia', yeuThich='$yeuThich'";
 
         if ($conn->query($sql) === TRUE) {
             $_SESSION['error'] = 'Record inserted successfully in PHIM';
