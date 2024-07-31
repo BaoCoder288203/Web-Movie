@@ -105,6 +105,50 @@ while ($page <= $totalPages) {
 
     $page++;
 }
+if (!empty($data['results'])) {
+        foreach ($data['results'] as $movie) {
+            $phimID = $movie['id'];
+    
+            // Lấy chi tiết phim bao gồm thời lượng
+            $detailsUrl = 'https://api.themoviedb.org/3/movie/' . $phimID . '?api_key=' . $apiKey . '&language=en-US';
+            $detailsResponse = file_get_contents($detailsUrl);
+            $details = json_decode($detailsResponse, true);
+    
+            if (isset($details['runtime'])) {
+                $thoiLuongPhim = $details['runtime'];
+    
+                // Cập nhật thời lượng phim vào cơ sở dữ liệu
+                $sql = "UPDATE PHIM SET thoiLuongPhim = ? WHERE maPhim = ?";
+                $stmt = $conn->prepare($sql);
+                
+                if ($stmt === false) {
+                    die("Lỗi chuẩn bị câu lệnh: " . $conn->error);
+                }
+    
+                $stmt->bind_param('ii', $thoiLuongPhim, $phimID);
+    
+                if (!$stmt->execute()) {
+                    $_SESSION['message'] = "Lỗi: " . $stmt->error;
+                    header('Location: CheckInsert.php');
+                    exit();
+                } else {
+                    $_SESSION['message'] = "Cập nhật thành công cho phim ID $phimID với thời lượng $thoiLuongPhim phút.<br>";
+                    header('Location: CheckInsert.php');
+                    exit();
+                }
+    
+                $stmt->close(); // Đảm bảo đóng câu lệnh sau khi thực hiện
+            } else {
+                $_SESSION['message'] = "Không có thông tin thời lượng cho phim ID" . $phimID;
+                header('Location: CheckInsert.php');
+                exit();
+            }
+        }
+    } else {
+        $_SESSION['message'] = "Không có phim nào được tìm thấy";
+        header('Location: CheckInsert.php');
+        exit();
+    }
 
 $_SESSION['message'] = "All data inserted successfully.";
 header('Location: CheckInsert.php');
