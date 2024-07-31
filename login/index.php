@@ -20,14 +20,19 @@
     unset($_SESSION['error']); // Xóa thông báo lỗi sau khi hiển thị
     }
     ?>
-    <?php if ($message) : ?>
-    <div class="notification">
-        <div class="message mt-3"><?= $message ?></div>
-    </div>
-    <?php endif; ?>
+
     <div class="container-login">
         <img src="../upload/poster_login.png" alt="">
         <div class="main-login">
+            <?php if($message) : ?>
+            <label class="message">
+                <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+                <div class="alert <?= $message ? 'error' : ''?>">
+                    <span class="alertClose" onclick="this.parentElement.style.display='none'">X</span>
+                    <span class="alertText"><?= $message ?></span>
+                </div>
+            </label>
+            <?php endif; ?>
             <form action="checkLogin.php" method="POST">
                 <h1>LOG IN</h1>
                 <input type="text" name="username" placeholder="Email or Number of Phone">
@@ -39,7 +44,7 @@
                     </div>
                     <a href="#">Forgot password ?</a>
                 </div>
-                <button type="submit">Login</button>
+                <button id="login-button" type="submit">Login</button>
                 <div class="logout">
                     <a href="#">Are you a new person here ?</a>
                     <a href="#">Log out now ?</a>

@@ -2,17 +2,20 @@
 
 :root {
 	--backgroundColor: rgba(51, 51, 51, 1);
+	--colorInput: rgb(25, 25, 25, 1);
+	--boxShadowLogin:rgba(192, 192, 192, 0.4);
+	--colorRed:rgb(218,0,0, 1);
 }
 
 /* Img poster */
 .carousel-item img {
-    height: 600px; /* Thay đổi chiều cao của hình ảnh nếu cần */
+    height: 750px; /* Thay đổi chiều cao của hình ảnh nếu cần */
     object-fit: cover;
 }
 
 body{
 	width: 100%;
-	/* height: 1000vh; */
+	height: 100vh;
 	background-color: var(--backgroundColor);
 	font-family: 'Roboto',sans-serif;
 }
@@ -26,21 +29,86 @@ img{
 }
 
 /* Login */
+
+.message {
+	height: 0;
+}
+
+.alert {
+    position: absolute; /* Đảm bảo thông báo nằm ở vị trí cố định */
+	top: 0;
+	left: 0;
+    width: 97%;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    line-height: 1.8;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: 400;
+    z-index: 9999; /* Đảm bảo thông báo nằm trên các phần tử khác */
+}
+
+.alertCheckbox {
+    display: none;
+}
+
+.alertCheckbox:checked + .alert {
+    display: none; /* Ẩn thông báo khi checkbox được chọn */
+}
+
+.alertText {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+}
+
+.alertClose {
+    float: right;
+    padding-top: 5px;
+    font-size: 10px;
+    cursor: pointer; /* Thay đổi con trỏ khi di chuột qua nút đóng */
+}
+
+.success {
+    background-color: #EFE;
+    border: 1px solid #DED;
+    color: #9A9;
+}
+
+.error {
+    background-color: #FEE;
+    border: 1px solid #EDD;
+    color: #A66;
+}
+
 .container-login{
-	min-width: 400px;
+
 	position: relative;
 }
+
+.container-login > img{
+	position: fixed; 
+	top: 0;
+    left: 0;
+    object-fit: cover; 
+	z-index: -1;
+}
+
 .main-login{
 	width: 520px;
-	height: 100%;
+	height: 100vh;
 	background-color: var(--backgroundColor);	
-	box-shadow: 1px 10px 10px 3px rgba(192, 192, 192, 0.4);
-	position: absolute;
+	box-shadow: 1px 10px 10px 3px var(--boxShadowLogin);
+	position: relative;
 	top: 0;
-	right: 0;
+	left: 1072px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	z-index: 1;
 }
 .main-login form{
 	width: 70%;
@@ -49,6 +117,7 @@ img{
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	z-index: 1;
 }
 
 .main-login form h1{
@@ -63,7 +132,7 @@ img{
 	padding: 7px 15px;
 	color: white;
 	font-size: 11px;
-	background-color: rgb(25, 25, 25, 1);
+	background-color: var(--colorInput);
 	border-radius: 7px;
 	border: none;
 	outline: none;
@@ -105,7 +174,7 @@ img{
 	font-size: 14px;
 	font-weight: 500;
 	color: white;
-	background-color: rgb(218,0,0, 1);
+	background-color: var(--colorRed);
 	border-radius: 15px;
 	border: none;
 	padding-top: 5px;
@@ -170,38 +239,20 @@ img{
 	margin-left: 5px;
 }
 
-.notification {
-	position: absolute;
-	width: 500px;
-	height: 100px;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	background-color: rgba(73, 73, 73, 1);	
-	/* background-color: red;	 */
-	z-index: 1000;
-}
-
-.notification .message{
-	font-size: 30px;
-	color: white;
-	position: relative;
-}
-
 /* Trang chu */
 /*header*/
 #header{
 	width: 100%;
 	position: fixed;
-	border-bottom: 2px solid rgba(255, 255, 255, 0.4); ;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.4);
 	padding: 2rem 0 ;
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgb(92, 92, 92, 0.3);
+    backdrop-filter: blur(5px);
 	z-index: 100;
 }
 #header .container > i
 {
 	color: white;
-	/* opacity: 0; */
 	cursor: pointer;
 	z-index: 1000;
 	transition: transform 0.4s ease-in-out;
@@ -324,6 +375,74 @@ img{
 }
 .carousel-item-left.active, .carousel-item-right.active {
 	transform: translateX(-100%);
+}
+
+
+main #slide .carousel-item{
+	position: relative;
+}
+
+main #slide .carousel-caption{
+	height: 500px;
+	position: absolute;
+	left: 8%;
+	top: 40%;
+	transform: translateY(-20%);
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+main #slide .carousel-caption .carousel-content p:nth-child(2){
+	color: rgb(255,230,0);
+}
+
+main #slide .carousel-caption .carousel-content p:nth-of-type(3){
+	width: 700px;
+}
+
+main #slide .carousel-caption .carousel-content h5{
+	font-size: 50px;
+	font-weight: bold;
+	margin: 20px 0;
+}
+
+main #slide .carousel-caption .carousel-love{
+	position: absolute;
+	left: 0;
+	top: 55%;
+}
+
+main #slide .carousel-caption .carousel-love form{
+	height: 350px;
+	display: flex;
+	align-items: center;
+}
+
+main #slide .carousel-caption .carousel-love button i{
+	margin-left: 10px;
+}
+
+main #slide .carousel-caption .carousel-love button{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 30px;
+	padding: 5px 15px;
+	font-size: 18px;
+	font-weight: bold;
+	border: none;
+	color: white;
+}
+main #slide .carousel-caption .carousel-love button:first-child{
+	background-color: var(--colorRed);
+	margin-right: 30px;
+}
+
+main #slide .carousel-caption .carousel-love button:last-child{
+	background-color: var(--backgroundColor);
 }
 
 .active {
