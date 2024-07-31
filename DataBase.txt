@@ -25,9 +25,7 @@ create table if not exists PHIM
     soDiemPhim float,
     namRaMat int,
     anhBia char(200),
-    maTheLoai char(10),
-	yeuthich char(3) Default False,
-    constraint FK_maTheLoai_PHIM foreign key (maTheLoai) references THELOAI(maTheLoai)
+	yeuthich char(3) Default False
 );
 
 create table if not exists Phim_TheLoai
