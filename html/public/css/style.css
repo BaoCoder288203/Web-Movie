@@ -160,7 +160,15 @@ label {
 
 .text-new {
 	color: white;
-    font-size: 28px;
+    font-size: 30px;
     padding-top: 30px;
-	padding-left: 35px;
+	font-weight: bold;
 }
+
+.custom-line {
+	border-bottom: 2px solid #ccc;
+	width: 95%;
+	margin-left: 10px;
+  }
+
+  
