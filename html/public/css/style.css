@@ -156,7 +156,7 @@ label {
 	font-weight: normal;
 }
 
-/* -------------------------NEW----------------------- */
+/* -------------------------NEW,MOVIE----------------------- */
 
 .text-new {
 	color: white;
@@ -171,4 +171,52 @@ label {
 	margin-left: 10px;
   }
 
-  
+/* -------------------------Scrollable-tabs----------------------- */ 
+.scrollable-tabs-container{
+	font-family: 'Roboto', sans-serif;
+	background-color: rgba(51, 51, 51, 1);
+	margin-top: 10px;
+	margin-left: 10px;
+	max-width: 1430px;
+	border-radius:  20px;
+}
+
+.scrollable-tabs-container svg {
+	width: 24px;
+	height: 24px;
+	padding: 8px;
+	cursor: pointer;
+	color: black;
+	display: none;
+}
+
+.scrollable-tabs-container ul {
+	display: flex;
+	gap:16px;
+	padding: 12px 0px;
+	margin:0;
+	list-style: none;
+	overflow-x: scroll;
+
+}
+
+.scrollable-tabs-container ul::-webkit-scrollbar{
+	display: none !important;
+}
+
+.scrollable-tabs-container a {
+	color: #fff;
+	text-decoration: none;
+    font-size: 20px;
+	background: black ;
+	padding:4px 42px;
+	display: inline-block;
+	border-radius: 20px;
+	user-select: none;
+	white-space: nowrap;
+}
+
+.scrollable-tabs-container a.active{
+	background-color: black;
+	color: white;
+}
