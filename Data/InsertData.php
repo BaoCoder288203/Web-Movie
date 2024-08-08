@@ -105,6 +105,9 @@ while ($page <= $totalPages) {
 
     $page++;
 }
+
+
+
 if (!empty($data['results'])) {
         foreach ($data['results'] as $movie) {
             $phimID = $movie['id'];
