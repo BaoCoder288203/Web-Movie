@@ -63,6 +63,8 @@
         </div>
     </div>
 
+
+
     <script src="https://kit.fontawesome.com/b563499548.js" crossorigin="anonymous"></script>
     <script src="../public/vendor/jquery-3.5.1.min.js"></script>
     <script src="../public/vendor/popper.min.js"></script>
