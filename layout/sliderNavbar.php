@@ -1,8 +1,8 @@
 <?php
         
         // Truy vấn để lấy các poster phim
-        $sql = "SELECT anhNen,noiDungPhim,soDiemPhim,thoiLuongPhim,namRaMat,tenPhim FROM PHIM";
-        $result = $conn->query($sql);
+        $sql1 = "SELECT anhNen,noiDungPhim,soDiemPhim,thoiLuongPhim,namRaMat,tenPhim FROM PHIM";
+        $result = $conn->query($sql1);
 
         $movies = [];
         if ($result->num_rows > 0) {
@@ -12,7 +12,28 @@
         }
         // Lấy năm hiện tại
         $currentYear = date('Y');
+
+        $sql2 = "SELECT tenTheLoai FROM THELOAI";
+        $result2 = $conn->query($sql2);
+
+        $categories = [];
+        if ($result2->num_rows > 0) {
+            while ($row = $result2->fetch_assoc()) {
+                $categories[] = $row;
+            }
+        }
+
+        $sql3 = "SELECT DISTINCT namRaMat FROM PHIM";
+        $result3 = $conn->query($sql3);
+
+        $years = [];
+        if ($result3->num_rows > 0) {
+            while ($row = $result3->fetch_assoc()) {
+                $years[] = $row;
+            }
+        }
         ?>
+
 
 
 <div id="slide">

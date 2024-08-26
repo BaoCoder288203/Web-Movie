@@ -18,24 +18,18 @@
             <div class="list-category">
                 <button class="category-button left-button-category"><i class="fa-solid fa-caret-left"></i></button>
                 <ul class="categories">
-                    <li><a href="#">Action</a>
+                    <?php
+                    foreach ($categories as $category):
+                    ?>
+                    <li><a href="#">
+                            <?= $category['tenTheLoai'] ?>
+                        </a>
                     </li>
-                    <li> <a href="#">Adventure</a>
-                    </li>
-                    <li><a href="#">Biography</a>
-                    </li>
-                    <li><a href="#">Cartoon</a>
-                    </li>
-                    <li><a href="#">Comedy</a>
-                    </li>
-                    <li><a href="#">Courtroom drama</a>
-                    </li>
-                    <li><a href="#">Documentary</a></li>
-                    <li><a href="#">Documentary</a></li>
-                    <li><a href="#">Documentary</a></li>
-                    <li><a href="#">Documentary</a></li>
-                    <li><a href="#">Documentary</a></li>
+                    <?php
+                    endforeach;
+                    ?>
                 </ul>
+
                 <button class="category-button right-button-category"><i class="fa-solid fa-caret-right"></i></button>
             </div>
             <div class="slider-container">
@@ -351,23 +345,16 @@
             <div class="list-category">
                 <button class="category-button left-button-category"><i class="fa-solid fa-caret-left"></i></button>
                 <ul class="categories">
-                    <li><a href="#">Action</a>
+                    <?php
+                    foreach ($categories as $category):
+                    ?>
+                    <li><a href="#">
+                            <?= $category['tenTheLoai'] ?>
+                        </a>
                     </li>
-                    <li> <a href="#">Adventure</a>
-                    </li>
-                    <li><a href="#">Biography</a>
-                    </li>
-                    <li><a href="#">Cartoon</a>
-                    </li>
-                    <li><a href="#">Comedy</a>
-                    </li>
-                    <li><a href="#">Courtroom drama</a>
-                    </li>
-                    <li><a href="#">Documentary</a></li>
-                    <li><a href="#">Documentary</a></li>
-                    <li><a href="#">Documentary</a></li>
-                    <li><a href="#">Documentary</a></li>
-                    <li><a href="#">Documentary</a></li>
+                    <?php
+                    endforeach;
+                    ?>
                 </ul>
                 <button class="category-button right-button-category"><i class="fa-solid fa-caret-right"></i></button>
             </div>
@@ -381,8 +368,14 @@
                     <button type="submit">Year <i class="fa-solid fa-sort-down"></i></button>
                     <div class="years">
                         <form action="#">
-                            <button type="submit">2024</button>
-                            <button type="submit">2023</button>
+                            <?php 
+                            foreach($years as $year):
+                            ?>
+                            <button type="submit"><?= $year['namRaMat']?></button>
+                            <?php 
+                            endforeach;
+                            ?>
+                            <!-- <button type="submit">2023</button>
                             <button type="submit">2022</button>
                             <button type="submit">2021</button>
                             <button type="submit">2020</button>
@@ -390,7 +383,7 @@
                             <button type="submit">2018</button>
                             <button type="submit">2017</button>
                             <button type="submit">2016</button>
-                            <button type="submit">2015</button>
+                            <button type="submit">2015</button> -->
                         </form>
                     </div>
                 </div>
@@ -877,4 +870,5 @@
 
 <?php 
     require '../layout/footer.php';
+?> require '../layout/footer.php';
 ?>

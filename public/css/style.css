@@ -804,10 +804,10 @@ main .new-film .slider-container {
 }
 
 .old-film .sort-by .submit-year .years form{
-	margin-top: 13px;
+	margin-top: 15px;
 	padding: 0;
 	height: 0;
-	width: 92px;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto ;
@@ -817,13 +817,13 @@ main .new-film .slider-container {
 	transition: height 300ms ;
 }
 .old-film .sort-by .submit-year .years form.open{
+	height: 150px;
 	z-index: 1000;
-	height: 100px;
 }
 
 
 .old-film .sort-by .submit-alpha .alpha form{
-	border-radius: 13px;
+	border-radius: 15px;
 	margin-top: 15px;
 	padding: 0;
 	width: 83px;
